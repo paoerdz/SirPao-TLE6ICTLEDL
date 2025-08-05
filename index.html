@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SirPao's TLE6 ICT Lesson Exemplar Downloader</title>
+  <link rel="manifest" href="main/manifest.json" />
+  <link rel="stylesheet" href="main/styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- HEADER -->
+    <header class="header">
+      <img src="images/sirpao_header.png" alt="Sir Pao Header" class="header-image" />
+    </header>
+
+    <!-- DROPDOWN -->
+    <div class="dropdown-container">
+      <select id="weekDropdown" class="dropdown">
+        <option value="" disabled selected><em>Choose week number!</em></option>
+        <option value="week1">Week 1 - Introduction to ICT</option>
+        <option value="week2">Week 2 - Computer Hardware Components</option>
+        <option value="week3">Week 3 - Computer Software Basics</option>
+        <option value="week4">Week 4 - Internet Safety and Digital Citizenship</option>
+        <option value="week5">Week 5 - Word Processing Fundamentals</option>
+        <option value="week6">Week 6 - Presentation Software Basics</option>
+        <option value="week7">Week 7 - Spreadsheet Introduction</option>
+        <option value="week8">Week 8 - Digital Communication Tools</option>
+      </select>
+    </div>
+
+    <!-- LESSON CONTENT -->
+    <div id="lessonContainer" class="lesson-container hidden">
+      <div class="lesson-thumbnail">
+        <img id="thumbnail" src="" alt="Lesson Thumbnail" />
+      </div>
+      <div class="lesson-title" id="lessonTitle"></div>
+      <div class="lesson-buttons">
+        <button id="cancelBtn" class="btn cancel">Cancel</button>
+        <a id="downloadBtn" class="btn download" download>Download</a>
+      </div>
+    </div>
+
+    <!-- EXIT & SOCIAL BUTTONS -->
+    <div class="footer">
+      <a href="https://www.facebook.com/share/19bWBk7C5r/">
+        <img src="images/e_logo.png" alt="E Logo" class="social-logo" />
+      </a>
+      <button class="btn exit" onclick="window.close()">EXIT</button>
+      <a href="https://www.facebook.com/share/16hasNnh1n/">
+        <img src="images/f_logo.png" alt="F Logo" class="social-logo" />
+      </a>
+    </div>
+  </div>
+
+  <script src="main/app.js"></script>
+</body>
+</html>
