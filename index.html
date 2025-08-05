@@ -1,58 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SirPao's TLE6 ICT Lesson Exemplar Downloader</title>
-  <link rel="manifest" href="main/manifest.json" />
-  <link rel="stylesheet" href="main/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SirPao's-TLE6ICTLEDL</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json.js">
 </head>
 <body>
-  <div class="app-container">
-    <!-- HEADER -->
-    <header class="header">
-      <img src="images/sirpao_header.png" alt="Sir Pao Header" class="header-image" />
-    </header>
 
-    <!-- DROPDOWN -->
-    <div class="dropdown-container">
-      <select id="weekDropdown" class="dropdown">
-        <option value="" disabled selected><em>Choose week number!</em></option>
-        <option value="week1">Week 1 - Introduction to ICT</option>
-        <option value="week2">Week 2 - Computer Hardware Components</option>
-        <option value="week3">Week 3 - Computer Software Basics</option>
-        <option value="week4">Week 4 - Internet Safety and Digital Citizenship</option>
-        <option value="week5">Week 5 - Word Processing Fundamentals</option>
-        <option value="week6">Week 6 - Presentation Software Basics</option>
-        <option value="week7">Week 7 - Spreadsheet Introduction</option>
-        <option value="week8">Week 8 - Digital Communication Tools</option>
-      </select>
-    </div>
+  <!-- 🔷 App Header -->
+  <header style="text-align: center; padding: 10px;">
+    <img src="images/sirpao_header.png" alt="SirPao Header" style="width: 100%; max-width: 600px; height: auto;">
+  </header>
 
-    <!-- LESSON CONTENT -->
-    <div id="lessonContainer" class="lesson-container hidden">
-      <div class="lesson-thumbnail">
-        <img id="thumbnail" src="" alt="Lesson Thumbnail" />
-      </div>
-      <div class="lesson-title" id="lessonTitle"></div>
-      <div class="lesson-buttons">
-        <button id="cancelBtn" class="btn cancel">Cancel</button>
-        <a id="downloadBtn" class="btn download" download>Download</a>
-      </div>
-    </div>
+  <!-- 🔷 Week Dropdown -->
+  <section style="text-align: center; margin: 20px;">
+    <select id="weekDropdown" style="font-style: italic; color: gray; padding: 10px;">
+      <option disabled selected>Choose week number!</option>
+      <option value="week1">Week 1 - Introduction to ICT</option>
+      <option value="week2">Week 2 - File Management</option>
+      <!-- Add more weeks as needed -->
+    </select>
+  </section>
 
-    <!-- EXIT & SOCIAL BUTTONS -->
-    <div class="footer">
-      <a href="https://www.facebook.com/share/19bWBk7C5r/">
-        <img src="images/e_logo.png" alt="E Logo" class="social-logo" />
-      </a>
-      <button class="btn exit" onclick="window.close()">EXIT</button>
-      <a href="https://www.facebook.com/share/16hasNnh1n/">
-        <img src="images/f_logo.png" alt="F Logo" class="social-logo" />
-      </a>
+  <!-- 🔷 Info Section -->
+  <section style="text-align: center; margin: 20px 0;">
+    <img src="images/info_txt.png" alt="Info Text" style="max-width: 100%; height: auto;">
+  </section>
+
+  <!-- 🔷 Exemplar Preview (dynamically injected) -->
+  <section id="exemplarSection" style="text-align: center; display: none; margin: 20px;">
+    <img id="exemplarThumbnail" src="" alt="Exemplar Thumbnail" style="width: 100%; max-width: 400px; height: auto; margin-bottom: 10px;">
+    <div style="margin-top: 10px;">
+      <button onclick="hideExemplar()" style="padding: 10px 20px;">Cancel</button>
+      <a id="downloadLink" href="#" download style="padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none;">Download</a>
     </div>
+  </section>
+
+  <!-- 🔷 Logo + Exit Buttons -->
+  <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 30px 0;">
+    <a href="https://www.facebook.com/share/19bWBk7C5r/">
+      <img src="images/e_logo.png" alt="E Logo" style="height: 30px;">
+    </a>
+
+    <button onclick="closeApp()" style="padding: 10px 20px;">Exit</button>
+
+    <a href="https://www.facebook.com/share/16hasNnh1n/">
+      <img src="images/f_logo.png" alt="F Logo" style="height: 30px;">
+    </a>
   </div>
 
-  <script src="main/app.js"></script>
+  <!-- 🔷 Footer -->
+  <footer style="display: flex; justify-content: space-between; align-items: center; padding: 0 15px; font-family: inherit;">
+    <span>© SirPao 2025</span>
+    <img src="images/deped_matatag_logo.png" alt="DepEd Matatag" width="40" height="20">
+  </footer>
+
+  <!-- 🔷 Bottom Attribution -->
+  <div style="text-align: center; margin-top: 10px; font-style: italic; color: black; font-family: inherit;">
+    &lt;/&gt;Coded &amp; run by Kensanity&lt;/&gt;
+  </div>
+
+  <!-- 🔷 Scripts -->
+  <script src="app.js"></script>
+  <script>
+    const weekDropdown = document.getElementById("weekDropdown");
+    const exemplarSection = document.getElementById("exemplarSection");
+    const exemplarThumbnail = document.getElementById("exemplarThumbnail");
+    const downloadLink = document.getElementById("downloadLink");
+
+    const exemplarData = {
+      week1: {
+        thumbnail: "images/week1_cover.png",
+        pdf: "pdf/week1.pdf"
+      },
+      week2: {
+        thumbnail: "images/week2_cover.png",
+        pdf: "pdf/week2.pdf"
+      }
+      // Add more weeks as needed
+    };
+
+    weekDropdown.addEventListener("change", function () {
+      const selected = weekDropdown.value;
+      const data = exemplarData[selected];
+      if (data) {
+        exemplarThumbnail.src = data.thumbnail;
+        downloadLink.href = data.pdf;
+        exemplarSection.style.display = "block";
+      }
+    });
+
+    function hideExemplar() {
+      exemplarSection.style.display = "none";
+      weekDropdown.selectedIndex = 0;
+    }
+
+    function closeApp() {
+      // Works in Android WebView or PWA
+      window.open('', '_self', '');
+      window.close();
+    }
+  </script>
 </body>
 </html>
