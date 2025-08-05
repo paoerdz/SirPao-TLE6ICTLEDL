@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eaeaea;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 1em;
+}
+
+.header-image {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.dropdown-container {
+  margin: 1em 0;
+}
+
+.dropdown {
+  width: 100%;
+  padding: 0.75em;
+  font-size: 1em;
+}
+
+.lesson-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.lesson-container.hidden {
+  display: none;
+}
+
+.lesson-thumbnail img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 0.5em;
+}
+
+.lesson-title {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.lesson-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 0.75em 1.5em;
+  border: none;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn.cancel {
+  background: #ddd;
+  color: #333;
+}
+
+.btn.download {
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+}
+
+.btn.exit {
+  background: #6A1B9A;
+  color: white;
+  width: 50%;
+  margin: 1em auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.social-logo {
+  width: 40px;
+  height: 40px;
+  margin: 0 1em;
+}
+
